@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="4"></td>
+                <td>{{total | usd}}</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            {%for row in rows%}
+                <tr>
+                    <td>{{row.symbol}}</td>
+                    <td>{{row.symbol}}</td>
+                    <td>{{row.sum}}</td>
+                    <td>{{row.price | usd}}</td>
+                    <td>{{(row.price*row.sum) | usd}}</td>
+                </tr>
+            {%endfor%}
+
+            <tr>
+                <td colspan="4">CASH</td>
+                <td>{{cash | usd}}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
